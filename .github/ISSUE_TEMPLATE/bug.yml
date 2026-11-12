@@ -1,0 +1,27 @@
+name: Bug report
+description: Report a reproducible problem using synthetic data.
+body:
+  - type: markdown
+    attributes:
+      value: Remove transcripts, audio, credentials, personal data, and private paths. Report security problems through the private security link.
+  - type: input
+    id: version
+    attributes:
+      label: Version and revision
+      description: Copy these from About English-er or english-er build-info; omit private paths.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction and expected behavior
+      description: Include Linux, browser, Codex, and Voxtype versions where relevant. Use synthetic text.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include only redacted, relevant diagnostic output.
+    validations:
+      required: true

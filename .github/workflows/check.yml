@@ -1,0 +1,41 @@
+name: Check
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_call:
+permissions:
+  contents: read
+concurrency:
+  group: check-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      UV_NO_GROUP: speech
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3
+      - name: Install locked dependencies
+        run: |
+          uv sync --directory apps/backend --frozen
+          pnpm install --frozen-lockfile
+          pnpm --filter @english-er/web exec playwright install --with-deps chromium
+      - name: Verify
+        run: scripts/verify-task check
+      - name: Scan source and generated web assets
+        env:
+          SCAN_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          SCAN_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          if [[ -n "$SCAN_BASE" && "$SCAN_BASE" != 0000000000000000000000000000000000000000 ]]; then
+            export GITLEAKS_RANGE="$SCAN_BASE..$SCAN_HEAD"
+          else
+            export GITLEAKS_RANGE="$SCAN_HEAD"
+          fi
+          scripts/scan-secrets

@@ -1,0 +1,39 @@
+[Unit]
+Description=English-er local review API
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory={{REPOSITORY_DIRECTORY}}
+ExecStart={{UVICORN_BIN}} english_er.entrypoints.http:app --host 127.0.0.1 --port 8001 --no-access-log --timeout-graceful-shutdown 10
+Restart=on-failure
+RestartSec=2s
+TimeoutStopSec=15s
+UMask=0077
+CacheDirectory=english-er
+CacheDirectoryMode=0700
+Environment=HF_HUB_OFFLINE=1
+NoNewPrivileges=true
+PrivateDevices=false
+PrivateTmp=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=read-only
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ReadWritePaths=%h/.local/share/english-er %h/.local/state/english-er %h/.cache/english-er
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+IPAddressDeny=any
+IPAddressAllow=localhost
+
+[Install]
+WantedBy=default.target

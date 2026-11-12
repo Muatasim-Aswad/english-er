@@ -1,0 +1,84 @@
+[project]
+name = "english-er-backend"
+version = "0.1.0"
+description = "Local API and worker for the English-er text workflow"
+license = "MIT"
+readme = "README.md"
+
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "aiosqlite==0.22.1",
+    "alembic==1.19.1",
+    "fastapi==0.141.1",
+    "pydantic==2.13.5",
+    "pydantic-settings==2.15.0",
+    "sqlalchemy==2.0.52",
+    "uvicorn[standard]==0.52.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/Muatasim-Aswad/english-er"
+Repository = "https://github.com/Muatasim-Aswad/english-er"
+Issues = "https://github.com/Muatasim-Aswad/english-er/issues"
+
+[project.scripts]
+english-er = "english_er.entrypoints.cli:main"
+english-er-worker = "english_er.entrypoints.worker:main"
+english-er-speech-prepare = "english_er.infra.kokoro:prepare_main"
+
+[build-system]
+requires = ["uv_build==0.12.7"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "english_er"
+module-root = "src"
+
+[dependency-groups]
+speech = [
+    "en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl",
+    "kokoro==0.9.4",
+    "soundfile==0.14.0",
+    "torch==2.13.0+cu126",
+]
+dev = [
+    "httpx2==2.12.0",
+    "mypy==2.3.1",
+    "pytest==9.1.1",
+    "pytest-asyncio==1.4.0",
+    "ruff==0.16.5",
+]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src", "scripts", "tests"]
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+
+[tool.uv]
+default-groups = ["dev", "speech"]
+package = true
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+
+[[tool.mypy.overrides]]
+module = ["numpy", "soundfile", "kokoro"]
+ignore_missing_imports = true

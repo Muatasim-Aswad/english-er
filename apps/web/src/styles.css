@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-sm: 38rem;
+  --breakpoint-md: 56rem;
+
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+
+  --text-2xs: 0.66rem;
+  --text-caption: 0.8rem;
+  --text-title: clamp(1.6rem, 3vw, 2.35rem);
+  --text-title--line-height: 1.25;
+  --text-title--letter-spacing: -0.035em;
+  --text-display: clamp(2.65rem, 7vw, 5.6rem);
+  --text-display--line-height: 0.9;
+  --text-display--letter-spacing: -0.06em;
+
+  --tracking-label: 0.06em;
+  --tracking-badge: 0.08em;
+  --tracking-eyebrow: 0.13em;
+
+  --container-shell: 94rem;
+
+  --spacing-column: clamp(1.25rem, 3vw, 2rem);
+
+  --shadow-card: 0 0.5rem 1.5rem rgb(54 67 62 / 8%);
+  --shadow-workspace: 0 1.5rem 4rem rgb(39 45 42 / 8%);
+
+  --color-ink: #17201e;
+  --color-ink-soft: #34403d;
+  --color-muted-strong: #56615e;
+  --color-muted: #64706c;
+  --color-paper: #ece9df;
+  --color-surface: #f8f6ef;
+  --color-card: #fffdf7;
+  --color-panel: #eeece4;
+  --color-mist: #dfddd5;
+  --color-line: #c2c0b6;
+  --color-line-soft: #d0cec4;
+  --color-control: #9c9d94;
+  --color-accent: #245f58;
+
+  --color-sage-50: #edf4ef;
+  --color-sage-100: #dcefe5;
+  --color-sage-400: #6ea68e;
+  --color-sage-500: #3d7d68;
+  --color-sage-700: #275f4e;
+
+  --color-clay-50: #fff6f3;
+  --color-clay-100: #f1ddd8;
+  --color-clay-500: #b4483f;
+  --color-clay-700: #8a342e;
+  --color-clay-900: #663f3b;
+
+  --color-honey-50: #ffedca;
+  --color-honey-100: #eee6c9;
+  --color-honey-400: #d59a3a;
+  --color-honey-700: #9a5708;
+  --color-honey-800: #6f571c;
+}
+
+@utility grid-cols-workspace {
+  grid-template-columns: minmax(18rem, 0.76fr) minmax(28rem, 1.24fr);
+}
+
+@layer base {
+  :root {
+    line-height: normal;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-width: 20rem;
+    min-height: 100vh;
+    color: var(--color-ink);
+    background:
+      radial-gradient(circle at 12% 0%, rgb(255 255 255 / 55%), transparent 30rem),
+      var(--color-paper);
+  }
+
+  button:enabled {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: wait;
+    opacity: 0.58;
+  }
+
+  button:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
