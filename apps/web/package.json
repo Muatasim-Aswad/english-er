@@ -1,0 +1,47 @@
+{
+  "name": "@english-er/web",
+  "private": true,
+  "homepage": "https://github.com/Muatasim-Aswad/english-er#readme",
+  "bugs": {
+    "url": "https://github.com/Muatasim-Aswad/english-er/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muatasim-Aswad/english-er.git"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "vp build",
+    "dev": "vp dev",
+    "e2e": "playwright test",
+    "lint": "vp lint",
+    "test": "vp test run",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "openapi-fetch": "0.17.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@tailwindcss/vite": "4.3.3",
+    "@testing-library/react": "16.3.3",
+    "@types/node": "26.4.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "@vitejs/plugin-react": "6.1.1",
+    "jsdom": "30.0.1",
+    "openapi-typescript": "7.13.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3",
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "4.1.11"
+  },
+  "engines": {
+    "node": ">=24.20.0"
+  },
+  "packageManager": "pnpm@11.24.0"
+}

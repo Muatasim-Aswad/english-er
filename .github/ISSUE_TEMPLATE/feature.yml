@@ -1,0 +1,17 @@
+name: Feature request
+description: Propose an improvement within the supported local workflow.
+body:
+  - type: markdown
+    attributes:
+      value: Use synthetic examples and remove private or personal data. Discuss larger changes in Discussions first.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Compatibility and privacy implications
+      description: Include alternatives and mark non-applicable items.

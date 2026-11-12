@@ -1,0 +1,31 @@
+{
+  "name": "english-er",
+  "private": true,
+  "homepage": "https://github.com/Muatasim-Aswad/english-er#readme",
+  "bugs": {
+    "url": "https://github.com/Muatasim-Aswad/english-er/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muatasim-Aswad/english-er.git"
+  },
+  "type": "module",
+  "scripts": {
+    "build:all": "pnpm --filter @english-er/web exec vp build",
+    "check": "scripts/verify-task check",
+    "check:foundation": "scripts/verify-task check:foundation",
+    "dev:web": "vp dev apps/web",
+    "lint:all": "vp run lint",
+    "test:all": "vp run test",
+    "typecheck:all": "vp run typecheck"
+  },
+  "devDependencies": {
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=24.20.0"
+  },
+  "packageManager": "pnpm@11.24.0"
+}

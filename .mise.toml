@@ -1,0 +1,79 @@
+[tools]
+node = "24.20.0"
+python = "3.12.13"
+uv = "0.12.7"
+pnpm = "11.24.0"
+gitleaks = "8.30.1"
+actionlint = "1.7.12"
+
+[tasks."api:generate"]
+description = "Regenerate the tracked TypeScript API contract"
+run = "bash scripts/api-types.sh"
+
+[tasks."api:check"]
+description = "Fail when the tracked TypeScript API contract has drifted"
+run = "bash scripts/api-types.sh --check"
+
+[tasks."dev:web"]
+description = "Start the loopback Vite development server"
+run = "pnpm --filter @english-er/web dev"
+
+[tasks."dev:api"]
+description = "Start the loopback FastAPI development server"
+run = "uv run --offline --frozen --directory apps/backend uvicorn english_er.entrypoints.http:app --host 127.0.0.1 --port 8001"
+
+[tasks."dev:worker"]
+description = "Start the persistent correction worker"
+run = "uv run --offline --frozen --directory apps/backend english-er-worker"
+
+[tasks."speech:prepare"]
+description = "Download and verify the local Kokoro GPU voice"
+run = "uv run --offline --frozen --directory apps/backend english-er-speech-prepare"
+
+[tasks."check:foundation"]
+description = "Run cached foundation checks"
+run = "pnpm exec vp run foundation --cache"
+
+[tasks."check:capture"]
+description = "Run capture and ingestion checks"
+run = "uv run --offline --frozen --directory apps/backend pytest -q tests/capture tests/persistence/test_ingestion.py"
+
+[tasks."check:worker"]
+description = "Run correction worker checks"
+run = "uv run --offline --frozen --directory apps/backend pytest -q tests/corrections tests/providers tests/test_worker.py"
+
+[tasks."check:web"]
+description = "Run review UI checks"
+run = "pnpm --filter @english-er/web exec vp test run && pnpm --filter @english-er/web exec vp lint && pnpm --filter @english-er/web exec tsc -b"
+
+[tasks."check:api"]
+description = "Run review API checks"
+run = "uv run --offline --frozen --directory apps/backend pytest -q tests/api tests/test_api_contract.py"
+
+[tasks.check]
+description = "Run the complete repository gate"
+run = "bash scripts/check_all.sh"
+
+[tasks."local:install"]
+description = "Install local service integration"
+run = "python3 scripts/local_install.py"
+
+[tasks."local:deploy"]
+description = "Run migrations, then restart the API and worker"
+run = "python3 scripts/deploy_identity.py && python3 scripts/local_deploy.py && python3 scripts/deploy_identity.py --running"
+
+[tasks."check:boundaries"]
+description = "Check application layers and feature dependency cycles"
+run = "python3 scripts/check_boundaries.py"
+
+[tasks."check:fast"]
+description = "Run commit-time formatting, lint, typing, boundaries, and contract checks"
+run = "bash scripts/check_fast.sh"
+
+[tasks."hooks:install"]
+description = "Enable the repository's local verification hooks"
+run = "git config core.hooksPath .githooks"
+
+[tasks."release:check"]
+description = "Validate a source-only release tag without publishing"
+run = "python3 scripts/release_check.py"
