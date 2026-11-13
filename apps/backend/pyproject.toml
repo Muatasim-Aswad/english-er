@@ -1,6 +1,6 @@
 [project]
 name = "english-er-backend"
-version = "0.1.0"
+version = "0.1.1"
 description = "Local API and worker for the English-er text workflow"
 license = "MIT"
 readme = "README.md"
