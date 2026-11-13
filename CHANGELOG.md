@@ -4,6 +4,12 @@ Changes follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and prod
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-13
+
+### Security
+
+- Updated vulnerable Python and JavaScript dependencies, including certificate roots, file locks, HTTP clients, and the Vite+ toolchain.
+
 ## [0.1.0] - 2026-11-12
 
 ### Added
