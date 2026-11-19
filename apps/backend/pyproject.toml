@@ -27,7 +27,7 @@ english-er-worker = "english_er.entrypoints.worker:main"
 english-er-speech-prepare = "english_er.infra.kokoro:prepare_main"
 
 [build-system]
-requires = ["uv_build==0.12.7"]
+requires = ["uv_build==0.13.7"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
