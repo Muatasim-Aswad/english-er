@@ -2,6 +2,19 @@
 
 English-er is a loopback-only, single-user application. It captures completed Voxtype transcripts, corrects independent transcript revisions through Codex, and plays corrected text through local Kokoro synthesis.
 
+## Repository layout
+
+```text
+english-er/
+├── apps/
+│   ├── backend/    Python and FastAPI backend with SQLite, Codex corrections, and Kokoro synthesis
+│   └── web/        React and TypeScript review interface styled with Tailwind CSS
+├── integrations/  Python hook for Voxtype transcript capture
+├── deploy/        systemd user service templates
+├── scripts/       Setup, verification, and API contract generation
+└── docs/          Project guides and reference
+```
+
 ## Ownership and dependencies
 
 ```text

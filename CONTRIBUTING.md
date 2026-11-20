@@ -12,4 +12,6 @@ Fork the repository and submit focused pull requests with meaningful tests for c
 
 Describe the resulting behavior, privacy implications, migrations and compatibility, and checks run; mark non-applicable items. Update authoritative documentation and regenerate both HTTP artifacts when contracts change. Generated files must not be edited by hand.
 
+Write short, specific commit subjects and pull request titles that start with an action verb and omit type prefixes. Review the pull request title before squash merging because it can become the commit subject.
+
 Maintainer pull requests require passing checks and another eligible CODEOWNER's approval, or a deliberate solo-maintainer admin bypass documented in the pull request. Auto-merge requires deliberate maintainer review and must wait for required checks and approvals.

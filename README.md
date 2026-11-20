@@ -28,12 +28,12 @@ Follow [Development](docs/DEVELOPMENT.md#setup) for frozen dependency setup, the
 
 English-er is single-user and loopback-only. Remote access and authentication are unsupported. The Voxtype and Codex integrations are unofficial and can break when upstream behavior changes; use them under the relevant upstream terms and your account's permissions. AI suggestions require your review.
 
-## Project guides
+## Documentation
 
-- [Development](docs/DEVELOPMENT.md): contributor setup and the single `scripts/verify-task check` gate.
-- [Operations](docs/OPERATIONS.md): permissions, network access, installation, backup, retention, and removal.
-- [Architecture](docs/ARCHITECTURE.md): ownership, runtime flow, and supported limits.
-- [Contributing](CONTRIBUTING.md), [Security](SECURITY.md), and [Changelog](CHANGELOG.md).
-- [Source-only releases](docs/RELEASING.md): versioned Git tags, release notes, and build identity.
+- [Operations](docs/OPERATIONS.md) — Install the services, manage capture, and back up or remove local data.
+- [Security](SECURITY.md) — Understand the local trust boundary and report vulnerabilities privately.
+- [Development](docs/DEVELOPMENT.md) — Set up a checkout, run the verification gate, and find contribution instructions.
+- [Architecture](docs/ARCHITECTURE.md) — Find where the code lives and follow a transcript through the system.
+- [Changelog](CHANGELOG.md) — See what changed in each release.
 
 Licensed under [MIT](LICENSE).
