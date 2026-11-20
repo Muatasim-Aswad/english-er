@@ -1,6 +1,6 @@
 # Development
 
-This document owns setup, checks, coding conventions, and generated artifacts. [Architecture](ARCHITECTURE.md) owns boundaries and invariants; [Operations](OPERATIONS.md) owns installation and deployment.
+This document owns setup, checks, coding conventions, and generated artifacts. See [Contributing](../CONTRIBUTING.md) for pull request expectations, [Architecture](ARCHITECTURE.md) for boundaries and invariants, and [Operations](OPERATIONS.md) for installation and deployment.
 
 ## Setup
 
